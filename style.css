@@ -1,31 +1,136 @@
 body {
-    font-family: sans-serif;
     margin: 30px;
-    background-color: #f2f2f2;
+    background-color: #420c14;
     text-align: center;
+    font-family: sans-serif;
 }
 
-#skill-tree {
-    margin-bottom: 20px;
+#main-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px;
+    box-shadow: 0 0 20px rgba(66, 12, 20, 0.3);
+    border-radius: 8px;
 }
+
+h1 {
+    background-color: #006A67;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 2rem;
+    width: 350px;
+    margin: auto;
+}
+
+#skill-tree.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
+/* Buttons */
 
 .node {
+    background-color: #D64045;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-size: 1rem;
     margin: 10px;
-    padding: 10px 20px;
+    margin-top: 15px;
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.node:hover {
+    background-color: #a93132;
+}
+
+.node:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+.table-toggle-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#submit-btn,
+#show-solution-btn, #toggle-table-btn {
+    background-color: #006A67;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+#submit-btn:hover {
+    background-color: #004d4c;
+}
+#show-solution-btn:hover, #toggle-table-btn:hover {
+    background-color: #004d4c;
+}
+
+/* Challenge section */
+
+#challenge-area {
+    background-color: #d8bfaa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
 }
 
 textarea {
-    width: 80%;
+    width: 90%;
     height: 100px;
     margin-top: 10px;
     font-family: monospace;
+    border: 1px solid #aaa;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 #feedback {
-    margin-top: 10px;
+    margin-top: 15px;
     font-weight: bold;
+}
+
+#solution-text {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgba(66, 12, 20, 0.8);
+    color: white;
+    border-radius: 6px;
+}
+
+.query-submit-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: nowrap;
+}
+
+#user-input {
+    width: 100%;
+    max-width: 600px;
+    height: 60px;
+    font-family: monospace;
+    border: 2px solid #420c14;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .hidden {
@@ -34,19 +139,55 @@ textarea {
 
 /* Data Tables */
 
+.table-container {
+    background-color: #d8bfaa;
+    padding: 10px;
+    margin-top: 15px;
+    overflow-x: auto;
+    border-radius: 6px;
+}
+
 .sql-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
+    background-color: #f6eee7;
+
 }
 
-.sql-table th, .sql-table td {
-    border: 1px solid #ccc;
+.sql-table th,
+.sql-table td {
+    border: 1px solid #420c14;
     padding: 8px;
     text-align: left;
 }
 
 .sql-table th {
-    background-color: #f8f8f8;
+    background-color: #eeded0;
     font-weight: bold;
+}
+
+.sql-joined-tables {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 10px;
+}
+
+.sql-joined-tables>* {
+    flex: 1 1 300px;
+    max-width: 100%;
+}
+
+.table-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center;
 }

@@ -45,24 +45,28 @@ const challenges = {
         },
         tableHTML: `
         <div class="sql-joined-tables">
-            <strong>Customers Table</strong>
-            <table class="sql-table">
-                <thead><tr><th>CustomerID</th><th>CustomerName</th></tr></thead>
-                <tbody>
-                    <tr><td>1</td><td>Dave</td></tr>
-                    <tr><td>2</td><td>Eva</td></tr>
-                </tbody>
-            </table>
+            <div class="table-block">
+                <strong>Customers Table</strong>
+                <table class="sql-table">
+                    <thead><tr><th>CustomerID</th><th>CustomerName</th></tr></thead>
+                    <tbody>
+                        <tr><td>1</td><td>Dave</td></tr>
+                        <tr><td>2</td><td>Eva</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-            <strong>Orders Table</strong>
-            <table class="sql-table">
-                <thead><tr><th>OrderID</th><th>CustomerID</th></tr></thead>
-                <tbody>
-                    <tr><td>101</td><td>1</td></tr>
-                    <tr><td>102</td><td>2</td></tr>
-                    <tr><td>103</td><td>2</td></tr>
-                </tbody>
-            </table>
+            <div class="table-block">
+                <strong>Orders Table</strong>
+                <table class="sql-table">
+                    <thead><tr><th>OrderID</th><th>CustomerID</th></tr></thead>
+                    <tbody>
+                        <tr><td>101</td><td>1</td></tr>
+                        <tr><td>102</td><td>2</td></tr>
+                        <tr><td>103</td><td>2</td></tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         `
 
@@ -82,6 +86,9 @@ const feedback = document.getElementById("feedback");
 const showSolutionBtn = document.getElementById("show-solution-btn");
 const solutionText = document.getElementById("solution-text");
 const tableRef = document.getElementById("table-reference");
+const toggleBtn = document.getElementById("toggle-table-btn");
+const tableContainer = document.getElementById("table-reference");
+
 
 // CTRL + Enter for submit button
 userInput.addEventListener("keydown", function (e) {
@@ -95,7 +102,7 @@ userInput.addEventListener("keydown", function (e) {
 // Event: Skill button clicked
 skillButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
-        console.log("Clicked:", btn.dataset.skill);
+        //console.log("Clicked:", btn.dataset.skill);
 
         currentSkill = btn.dataset.skill;
         const challenge = challenges[currentSkill];
@@ -112,8 +119,8 @@ skillButtons.forEach((btn) => {
         solutionText.textContent = "";
 
         challengeArea.classList.remove("hidden");
-
         renderTable(currentSkill);
+        userInput.focus();
 
     });
 });
@@ -150,7 +157,7 @@ submitBtn.addEventListener("click", () => {
 // Event: Show Solution
 showSolutionBtn.addEventListener("click", () => {
     const solution = challenges[currentSkill].expected.answer;
-    solutionText.textContent = `✅ Solution: ${solution}`;
+    solutionText.textContent = `${solution}`;
     solutionText.classList.remove("hidden");
 });
 
@@ -165,3 +172,9 @@ function renderTable(skillKey) {
         tableRef.classList.add("hidden");
     }
 }
+
+
+toggleBtn.addEventListener('click', () => {
+    tableContainer.classList.toggle('hidden');
+    toggleBtn.textContent = tableContainer.classList.contains('hidden') ? 'Show Table' : 'Hide Table';
+});

@@ -10,26 +10,41 @@
 </head>
 
 <body>
-    <h1>SQL Skill Tree Trainer</h1>
 
-    <div id="skill-tree">
-        <button class="node" data-skill="select">SELECT</button>
-        <button class="node" data-skill="where" disabled>WHERE</button>
-        <button class="node" data-skill="join" disabled>JOIN</button>
-    </div>
+    <div class="main-container">
 
-    <div id="challenge-area" class="hidden">
-        <h2 id="challenge-title"></h2>
-        <p id="challenge-description"></p>
+        <h1>SQL Skill Tree Trainer</h1>
 
-        <div id="table-reference" class="table-container"></div>
+        <div id="skill-tree" class="flex-center">
+            <button class="node" data-skill="select">SELECT</button>
+            <button class="node" data-skill="where" disabled>WHERE</button>
+            <button class="node" data-skill="join" disabled>JOIN</button>
+        </div>
 
-        <textarea id="user-input" placeholder="Write your SQL query here..."></textarea>
-        <button id="submit-btn">Submit</button>
-        <p id="feedback"></p>
+        <div id="challenge-area" class="hidden">
+            <h2 id="challenge-title"></h2>
+            <p id="challenge-description"></p>
 
-        <button id="show-solution-btn" class="hidden">Show Solution</button>
-        <p id="solution-text" class="hidden"></p>
+            <div class="table-toggle-container">
+                <button id="toggle-table-btn">Hide Table</button>
+            </div>
+            <div id="table-reference" class="table-container"></div>
+
+            <!--
+            <textarea id="user-input" placeholder="Write your SQL query here..."></textarea>
+            <button id="submit-btn">Submit</button>
+            -->
+            <div class="query-submit-container">
+                <textarea id="user-input" placeholder="Write your SQL query here..."></textarea>
+                <button id="submit-btn">Submit</button>
+            </div>
+
+
+            <p id="feedback"></p>
+
+            <button id="show-solution-btn" class="hidden">Show Solution</button>
+            <p id="solution-text" class="hidden"></p>
+        </div>
     </div>
 
     <script src="validator.js"></script>
