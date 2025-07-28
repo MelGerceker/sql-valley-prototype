@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mini SQL Skill Tree</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini SQL Skill Tree</title>
+    <link rel="stylesheet" href="style.css" />
+
 </head>
+
 <body>
-  <h1>SQL Skill Tree Trainer</h1>
+    <h1>SQL Skill Tree Trainer</h1>
 
-  <div id="skill-tree">
-    <button class="node" data-skill="select">SELECT</button>
-    <button class="node" data-skill="where" disabled>WHERE</button>
-    <button class="node" data-skill="join" disabled>JOIN</button>
-  </div>
+    <div id="skill-tree">
+        <button class="node" data-skill="select">SELECT</button>
+        <button class="node" data-skill="where" disabled>WHERE</button>
+        <button class="node" data-skill="join" disabled>JOIN</button>
+    </div>
 
-  <div id="challenge-area" class="hidden">
-    <h2 id="challenge-title"></h2>
-    <p id="challenge-description"></p>
-    <textarea id="user-input" placeholder="Write your SQL query here..."></textarea>
-    <button id="submit-btn">Submit</button>
-    <p id="feedback"></p>
-  </div>
+    <div id="challenge-area" class="hidden">
+        <h2 id="challenge-title"></h2>
+        <p id="challenge-description"></p>
+        <textarea id="user-input" placeholder="Write your SQL query here..."></textarea>
+        <button id="submit-btn">Submit</button>
+        <p id="feedback"></p>
+    </div>
 
 </body>
+
 </html>
