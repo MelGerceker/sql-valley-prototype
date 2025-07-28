@@ -2,7 +2,7 @@
 
 A simple educational web app that simulates SQL challenges in a skill tree format.
 
-###  Features
+###  Main Features
 - 3 basic SQL challenges: SELECT, WHERE, JOIN.
 - Skill Tree layout: unlock one challenge at a time.
 - Real-time feedback on SQL inputs using JavaScript validators.
@@ -10,6 +10,12 @@ A simple educational web app that simulates SQL challenges in a skill tree forma
 ### Technologies
 - HTML, CSS, JavaScript 
 - Testing is done via JEST
+
+### How to Use
+- Click on the first challenge: SELECT
+- Enter your answer via the submit button or Ctrl + Enter
+- You will get precise feedback on your answer. Explaining wheter you have missing, extra or out of order queries.
+- You also have the option to show the answer to the question
 
 ### Relevance
 Created as a sample project for the **SQL Valley** position at TU/e. This demonstrates:

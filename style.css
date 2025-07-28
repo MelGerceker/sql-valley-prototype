@@ -31,3 +31,22 @@ textarea {
 .hidden {
     display: none;
 }
+
+/* Data Tables */
+
+.sql-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.sql-table th, .sql-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+.sql-table th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
