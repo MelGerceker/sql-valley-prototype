@@ -78,88 +78,6 @@ submitBtn.addEventListener("click", () => {
 
 });
 
-
-// Validator:
-// TODO: Move to another file for Seperation of Concerns
-function validateSQL(input, expected) {
-    const normalize = (str) =>
-        str.toUpperCase().replace(/\s+/g, " ").replace(/;$/, "").trim();
-
-    const userQuery = normalize(input);
-    const correctQuery = normalize(expected.answer);
-
-    const userTokens = userQuery.split(" ");
-    const correctTokens = correctQuery.split(" ");
-
-    const results = {
-        feedback: "",
-        status: "fail",
-        missing: [],
-        extra: [],
-        outOfOrder: [],
-        exactMatch: false
-    };
-
-    // Full match
-    if (userQuery === correctQuery && userTokens.length === correctTokens.length) {
-        results.status = "full";
-        results.feedback = "✅ Perfect!";
-        results.exactMatch = true;
-        return results;
-    }
-
-    // Detect missing and extra tokens
-    const missingTokens = correctTokens.filter(t => !userTokens.includes(t));
-    const extraTokens = userTokens.filter(t => !correctTokens.includes(t));
-    results.missing = missingTokens;
-    results.extra = extraTokens;
-
-    // TODO: Fix that when "gibberish" is the input, it goes to the missing tokens case.
-    // TODO: Fix that when the answer is correct, but there are extra tokens it goes to fallback results. (?)
-
-    // Missing tokens
-    if (missingTokens.length > 0) {
-        results.status = "partial";
-        results.feedback = `⚠️ Partial match, some parts are missing.`;
-        //TODO: Add hints button which will show:
-        // Missing: ${results.missingKeywords.join(", ")}       
-        return results;
-    }
-
-    // Extra tokens
-    if (extraTokens.length > 0) {
-        results.status = "fail";
-        results.feedback = `❌ Query is incorrect, some extra parts are present.`;
-        //TODO: Add hints button which will show:
-        // Extra token(s): ${extraTokens.join(", ")}
-        return results;
-    }
-
-    // Order check
-    const outOfOrderTokens = [];
-    for (let i = 0; i < correctTokens.length; i++) {
-        if (userTokens[i] !== correctTokens[i]) {
-            outOfOrderTokens.push({
-                expected: correctTokens[i],
-                found: userTokens[i] || "(none)"
-            });
-        }
-    }
-    results.outOfOrder = outOfOrderTokens;
-
-    if (outOfOrderTokens.length > 0) {
-        results.status = "partial";
-        results.feedback = "⚠️ Some tokens are out of order.";
-        return results;
-    }
-
-    // Fallback fail
-    results.status = "fail";
-    results.feedback = `❌ Query is incorrect.`;
-    return results;
-
-}
-
 // Event: Show Solution
 showSolutionBtn.addEventListener("click", () => {
     const solution = challenges[currentSkill].expected.answer;
@@ -168,4 +86,3 @@ showSolutionBtn.addEventListener("click", () => {
 });
 
 //TODO: Old solution from previous exercise is still shown
-

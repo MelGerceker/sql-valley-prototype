@@ -1,0 +1,23 @@
+{
+  "name": "mini-sql",
+  "version": "1.0.0",
+  "description": "A simple educational web app that simulates SQL challenges in a skill tree format.",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MelGerceker/mini-sql.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MelGerceker/mini-sql/issues"
+  },
+  "homepage": "https://github.com/MelGerceker/mini-sql#readme",
+  "devDependencies": {
+    "jest": "^30.0.5"
+  }
+}

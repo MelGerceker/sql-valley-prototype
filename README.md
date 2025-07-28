@@ -9,6 +9,7 @@ A simple educational web app that simulates SQL challenges in a skill tree forma
 
 ### Technologies
 - HTML, CSS, JavaScript 
+- Testing is done via JEST
 
 ### Relevance
 Created as a sample project for the **SQL Valley** position at TU/e. This demonstrates:
