@@ -64,7 +64,8 @@ h1 {
 }
 
 #submit-btn,
-#show-solution-btn, #toggle-table-btn {
+#show-solution-btn,
+#toggle-table-btn {
     background-color: #006A67;
     color: white;
     border: none;
@@ -78,7 +79,9 @@ h1 {
 #submit-btn:hover {
     background-color: #004d4c;
 }
-#show-solution-btn:hover, #toggle-table-btn:hover {
+
+#show-solution-btn:hover,
+#toggle-table-btn:hover {
     background-color: #004d4c;
 }
 
@@ -190,4 +193,53 @@ textarea {
     font-weight: bold;
     margin-bottom: 8px;
     text-align: center;
+}
+
+/* Dart Game */
+
+#dart-game {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#dart-game.hidden {
+    display: none !important;
+    background: none !important;
+}
+
+#score-ui {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    font-size: 14px;
+    z-index: 9999;
+    display: flex;
+    gap: 10px;
+}
+
+#score-ui.hidden {
+    display: none;
+}
+
+#score-ui.static {
+    position: static;
+    margin-top: 15px;
+    justify-content: center;
+}
+
+#dart-target {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    pointer-events: auto;
+    cursor: crosshair;
 }

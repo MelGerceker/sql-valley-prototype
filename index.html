@@ -21,6 +21,11 @@
             <button class="node" data-skill="join" disabled>JOIN</button>
         </div>
 
+        <div id="score-ui" class="static">
+            <div id="accuracy">🎯 Accuracy: 0%</div>
+            <div id="average">Avg: 0%</div>
+        </div>
+
         <div id="challenge-area" class="hidden">
             <h2 id="challenge-title"></h2>
             <p id="challenge-description"></p>
@@ -30,10 +35,6 @@
             </div>
             <div id="table-reference" class="table-container"></div>
 
-            <!--
-            <textarea id="user-input" placeholder="Write your SQL query here..."></textarea>
-            <button id="submit-btn">Submit</button>
-            -->
             <div class="query-submit-container">
                 <textarea id="user-input" placeholder="Write your SQL query here..."></textarea>
                 <button id="submit-btn">Submit</button>
@@ -47,6 +48,11 @@
         </div>
     </div>
 
+    <div id="dart-game" class="hidden">
+        <img id="dart-target" src="target.svg" alt="Target">
+    </div>
+
+    <script src="dartGame.js"></script>
     <script src="validator.js"></script>
     <script src="app.js"></script>
 

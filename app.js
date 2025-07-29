@@ -98,6 +98,9 @@ userInput.addEventListener("keydown", function (e) {
     }
 });
 
+//FIX: Bug with unlocking new skill
+// Third skill gets unlocked when solving the first challenge twice!!!
+
 
 // Event: Skill button clicked
 skillButtons.forEach((btn) => {
@@ -146,6 +149,13 @@ submitBtn.addEventListener("click", () => {
             (btn) => btn.dataset.skill === currentSkill
         );
         currentBtn.classList.add("completed");
+
+        // Start dart game
+        setTimeout(() => {
+            startDartGame();
+            dartScoreText.style.display = "block";
+        }, 1000);
+
     }
 
     // Show solution button after an attempt
