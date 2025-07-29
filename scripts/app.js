@@ -1,79 +1,6 @@
-// Model: Skill definitions and challenges
-// TODO: Move the challenges section for SoC
-const challenges = {
-    select: {
-        title: "SELECT Challenge",
-        description: "Write a query to select all data from the 'Customers' table.",
-        expected: {
-            answer: "SELECT * FROM Customers;"
-        },
-        tableHTML: `
-        <strong>Customers Table</strong>
-        <table class="sql-table">
-            <thead><tr><th>CustomerID</th><th>CustomerName</th><th>Age</th></tr></thead>
-            <tbody>
-                <tr><td>1</td><td>Alice</td><td>25</td></tr>
-                <tr><td>2</td><td>Bob</td><td>35</td></tr>
-                <tr><td>3</td><td>Charlie</td><td>40</td></tr>
-            </tbody>
-        </table>
-    `
-    },
-    where: {
-        title: "WHERE Challenge",
-        description: "Select customers who are older than 30.",
-        expected: {
-            answer: "SELECT CustomerName FROM Customers WHERE Age > 30;"
-        },
-        tableHTML: `
-        <strong>Customers Table</strong>
-        <table class="sql-table">
-            <thead><tr><th>CustomerID</th><th>CustomerName</th><th>Age</th></tr></thead>
-            <tbody>
-                <tr><td>1</td><td>Alice</td><td>25</td></tr>
-                <tr><td>2</td><td>Bob</td><td>35</td></tr>
-                <tr><td>3</td><td>Charlie</td><td>40</td></tr>
-            </tbody>
-        </table>
-    `
-    },
-    join: {
-        title: "JOIN Challenge",
-        description: "Join Customers with Orders on CustomerID.",
-        expected: {
-            answer: "SELECT Orders.OrderID, Customers.CustomerName FROM Orders INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID;"
-        },
-        tableHTML: `
-        <div class="sql-joined-tables">
-            <div class="table-block">
-                <strong>Customers Table</strong>
-                <table class="sql-table">
-                    <thead><tr><th>CustomerID</th><th>CustomerName</th></tr></thead>
-                    <tbody>
-                        <tr><td>1</td><td>Dave</td></tr>
-                        <tr><td>2</td><td>Eva</td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="table-block">
-                <strong>Orders Table</strong>
-                <table class="sql-table">
-                    <thead><tr><th>OrderID</th><th>CustomerID</th></tr></thead>
-                    <tbody>
-                        <tr><td>101</td><td>1</td></tr>
-                        <tr><td>102</td><td>2</td></tr>
-                        <tr><td>103</td><td>2</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        `
-
-    }
-};
-
 let currentSkill = null;
+const skillOrder = ["select", "where", "join"];
+const completedSkills = new Set();
 
 // DOM elements
 const skillButtons = document.querySelectorAll(".node");
@@ -140,6 +67,7 @@ submitBtn.addEventListener("click", () => {
             "red";
 
     if (result.status === "full") {
+        /*
         const nextBtn = [...skillButtons].find(
             (btn) => btn.disabled && !btn.classList.contains("completed")
         );
@@ -149,6 +77,24 @@ submitBtn.addEventListener("click", () => {
             (btn) => btn.dataset.skill === currentSkill
         );
         currentBtn.classList.add("completed");
+        */
+        const currentBtn = [...skillButtons].find(
+            (btn) => btn.dataset.skill === currentSkill
+        );
+        currentBtn.classList.add("completed");
+        completedSkills.add(currentSkill);
+
+        // Unlock next skill if previous one is completed
+        const currentIndex = skillOrder.indexOf(currentSkill);
+        const nextSkill = skillOrder[currentIndex + 1];
+
+        if (nextSkill && !completedSkills.has(nextSkill)) {
+            const nextBtn = [...skillButtons].find(
+                (btn) => btn.dataset.skill === nextSkill
+            );
+            if (nextBtn) nextBtn.disabled = false;
+        }
+
 
         // Start dart game
         setTimeout(() => {
@@ -171,6 +117,9 @@ showSolutionBtn.addEventListener("click", () => {
     solutionText.classList.remove("hidden");
 });
 
+// Note: Show solutions button is not removed after correct solution is entered by the user.
+// This is due to allow explanations in the solutions in the future.
+
 // Renders Data Tables for Each Exercise
 function renderTable(skillKey) {
     const challenge = challenges[skillKey];
@@ -182,7 +131,6 @@ function renderTable(skillKey) {
         tableRef.classList.add("hidden");
     }
 }
-
 
 toggleBtn.addEventListener('click', () => {
     tableContainer.classList.toggle('hidden');

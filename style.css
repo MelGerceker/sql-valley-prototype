@@ -209,7 +209,6 @@ textarea {
 
 #dart-game.hidden {
     display: none !important;
-    background: none !important;
 }
 
 #score-ui {

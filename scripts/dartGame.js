@@ -25,6 +25,7 @@ function setScorePositionFloating(floating = true) {
 }
 
 function hideDartGame() {
+    document.body.style.overflow = '';
     dartGame.classList.add("hidden");
     setScorePositionFloating(false);
 }
@@ -36,9 +37,12 @@ function startDartGame() {
 
     setScorePositionFloating(true);
 
-    // Generate random position within window bounds, avoid overflow
-    // TODO: Fix overflow / styling when dart is generated on screen, scrollbars should not appear
-    const targetSize = 100;
+    // Avoid placement bugs and overflow
+    window.scrollTo(0, 0); 
+    document.body.style.overflow = 'hidden';
+
+    const targetSize = 300; // temp solution
+    // Note: Not sure if the target can appear on the h1 or skill buttons
     const padding = 20;
     const maxX = window.innerWidth - targetSize - padding;
     const maxY = window.innerHeight - targetSize - padding;
@@ -56,7 +60,7 @@ function startDartGame() {
 
         setTimeout(() => {
             updateScoreUI(0); // missed
-            hideDartGame(); 
+            hideDartGame();
         }, 1500);
     }, 3000);
 
