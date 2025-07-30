@@ -105,32 +105,31 @@ showSolutionBtn.addEventListener("click", () => {
     const solution = challenges[currentSkill].expected.answer;
     solutionText.textContent = `${solution}`;
     solutionText.classList.remove("hidden");
-    hintText.classList.add("hidden");
-
 });
+
 
 // Note: Show solutions button is not removed after correct solution is entered by the user.
 // This is due to allow explanations in the solutions in the future.
 
 // Event: Hint Button
-// TODO: Improve so that the hint text takes place of the show solution text.
 hintBtn.addEventListener("click", () => {
     const answer = userInput.value.trim();
     const expected = challenges[currentSkill].expected;
     const result = validateSQL(answer, expected);
 
+    let hintMessage = "";
     if (result.missing.length > 0) {
-        hintText.textContent = `Missing: ${result.missing.join(", ")}`;
+        hintMessage = `Missing: ${result.missing.join(", ")}`;
     } else if (result.extra.length > 0) {
-        hintText.textContent = `Extra: ${result.extra.join(", ")}`;
+        hintMessage = `Extra: ${result.extra.join(", ")}`;
     } else {
-        hintText.textContent = "No hints available.";
-        //Note: out of order case could be added here
+        hintMessage = "No hints available.";
     }
 
-    hintText.classList.remove("hidden");
-    solutionText.classList.add("hidden");
+    solutionText.textContent = hintMessage;
+    solutionText.classList.remove("hidden");
 });
+
 
 // Renders Data Tables for Each Exercise
 function renderTable(skillKey) {
@@ -145,6 +144,6 @@ function renderTable(skillKey) {
 }
 
 toggleBtn.addEventListener('click', () => {
-    tableContainer.classList.toggle('hidden');
-    toggleBtn.textContent = tableContainer.classList.contains('hidden') ? 'Show Table' : 'Hide Table';
+    const isHidden = tableContainer.classList.toggle('hidden');
+    toggleBtn.textContent = isHidden ? '► Show Table' : '▼ Hide Table';
 });

@@ -43,6 +43,15 @@ h1 {
     flex-wrap: wrap;
 }
 
+.description-and-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
 .button-stack {
     display: flex;
     flex-direction: column;
@@ -73,6 +82,7 @@ h1 {
     padding: 10px;
     border-radius: 6px;
     font-size: 14px;
+    text-align: left;
 }
 
 #dart-container {
@@ -90,7 +100,7 @@ h1 {
     gap: 10px;
 }
 
-#hint-text{
+#hint-text {
     color: orange;
 
 }
@@ -127,8 +137,7 @@ h1 {
 }
 
 #submit-btn,
-#show-solution-btn,
-#toggle-table-btn {
+#show-solution-btn {
     background-color: #006A67;
     color: white;
     border: none;
@@ -139,12 +148,24 @@ h1 {
     margin-top: 10px;
 }
 
-#submit-btn:hover {
-    background-color: #004d4c;
+#toggle-table-btn {
+    background-color: var(--light);
+    color: #006A67;
+    border: 3px solid #006A67;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#toggle-table-btn:hover{
+    color: #004d4c;
 }
 
 #show-solution-btn:hover,
-#toggle-table-btn:hover {
+#submit-solution-btn:hover {
     background-color: #004d4c;
 }
 
@@ -156,6 +177,7 @@ h1 {
     border-radius: 6px;
     font-size: 15px;
     cursor: pointer;
+    align-self: flex-start;
 }
 
 #hint-btn:hover {
@@ -170,6 +192,9 @@ h1 {
     border-radius: 10px;
     margin-top: 20px;
     border: 6px solid var(--green);
+    max-width: 900px;
+    justify-content: center;
+    margin-inline: auto;
 }
 
 textarea {
@@ -226,6 +251,8 @@ textarea {
     margin-top: 15px;
     overflow-x: auto;
     border-radius: 6px;
+    margin-inline: auto;
+    max-width: 720px;
 }
 
 .sql-table {
