@@ -11,7 +11,7 @@ const avgText = document.getElementById("average");
 function updateScoreUI(accuracy) {
     const avg = dartShots ? Math.round(dartScoreTotal / dartShots) : 0;
     accuracyText.textContent = `🎯 Accuracy: ${accuracy}%`;
-    avgText.textContent = `Avg: ${avg}%`;
+    avgText.textContent = `🎯 Avg: ${avg}%`;
 }
 
 function setScorePositionFloating(floating = true) {

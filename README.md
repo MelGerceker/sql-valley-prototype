@@ -30,6 +30,11 @@ Created as a sample project for the **SQL Valley** position at TU/e. This demons
 - Input validation and feedback logic (Educational Programmer)
 - Event-driven UI and interactive node flow (Skill Tree Tool Developer)
 
+### Credits
+The dartboard image (dartBoard.html and dartBoard.css) is adapted from David Altreiter - [CodePen: Dartboard](https://codepen.io/altreiter/pen/XzQeGJ). Licensed under the MIT License (see assets/LICENSE-THIRD-PARTY.txt for full text).
+
+### Structure
+
 ---
 
 Feel free to fork or contribute!

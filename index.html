@@ -6,60 +6,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mini SQL Skill Tree</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="assets/dartBoard.css" />
 
 </head>
 
 <body>
     <div class="main-container">
 
-        <h1>SQL Skill Tree Trainer</h1>
+        <div id="top-bar">
+            <div id="dart-container"> </div>
 
-        <div id="skill-tree" class="flex-center">
-            <button class="node" data-skill="select">SELECT</button>
-            <button class="node" data-skill="where" disabled>WHERE</button>
-            <button class="node" data-skill="join" disabled>JOIN</button>
-        </div>
+            <div id="header-and-buttons">
 
-        <div id="score-ui" class="static">
-            <div id="accuracy">🎯 Accuracy: 0%</div>
-            <div id="average">Avg: 0%</div>
-        </div>
-
-        <div id="challenge-area" class="hidden">
-            <h2 id="challenge-title"></h2>
-            <p id="challenge-description"></p>
-
-            <div class="table-toggle-container">
-                <button id="toggle-table-btn">Hide Table</button>
-            </div>
-            <div id="table-reference" class="table-container"></div>
-
-            <div class="query-submit-container">
-                <textarea id="user-input" placeholder="Write your SQL query here..."></textarea>
-                <div class="button-stack">
-                    <button id="hint-btn">Hint</button>
-                    <button id="submit-btn">Submit</button>
+                <h1>SQL Skill Tree Trainer</h1>
+                <div id="skill-tree" class="flex-center">
+                    <button class="node" data-skill="select">SELECT</button>
+                    <button class="node" data-skill="where" disabled>WHERE</button>
+                    <button class="node" data-skill="join" disabled>JOIN</button>
                 </div>
-                <div id="hint-text" class="hidden"></div>
-
             </div>
 
-
-            <p id="feedback"></p>
-
-            <button id="show-solution-btn" class="hidden">Show Solution</button>
-            <p id="solution-text" class="hidden"></p>
+            <div id="score-sidebar">
+                <div id="accuracy">🎯 Accuracy: 0%</div>
+                <div id="average">🎯 Avg: 0%</div>
+            </div>
         </div>
+
+    </div>
+
+
+    <div id="challenge-area" class="hidden">
+        <h2 id="challenge-title"></h2>
+        <p id="challenge-description"></p>
+
+        <div class="table-toggle-container">
+            <button id="toggle-table-btn">Hide Table</button>
+        </div>
+        <div id="table-reference" class="table-container"></div>
+
+        <div class="query-submit-container">
+            <textarea id="user-input" placeholder="Write your SQL query here..."></textarea>
+            <div class="button-stack">
+                <button id="hint-btn">Hint</button>
+                <button id="submit-btn">Submit</button>
+            </div>
+            <div id="hint-text" class="hidden"></div>
+
+        </div>
+
+
+        <p id="feedback"></p>
+
+        <button id="show-solution-btn" class="hidden">Show Solution</button>
+        <p id="solution-text" class="hidden"></p>
+    </div>
     </div>
 
     <div id="dart-game" class="hidden">
-        <img id="dart-target" src="target.svg" alt="Target">
+        <img id="dart-target" src="assets/target.svg" alt="Target">
     </div>
 
     <script src="scripts/challenges.js"></script>
     <script src="scripts/dartGame.js"></script>
     <script src="scripts/validator.js"></script>
     <script src="scripts/app.js"></script>
+
+    <script>
+        fetch("assets/dartboard.html")
+            .then((res) => res.text())
+            .then((html) => {
+                document.getElementById("dart-container").innerHTML = html;
+            });
+    </script>
+
 
 </body>
 

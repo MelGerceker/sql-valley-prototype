@@ -1,6 +1,18 @@
+:root {
+    --green: #57a75a;
+    --dark: #333;
+    --light: #FCE7CF;
+    --brownish: #420c14;
+    --red: #D64045;
+    --darkgreen: #006A67;
+    --tan: #F2D4B2;
+    --orange: orange;
+}
+
+
 body {
     margin: 30px;
-    background-color: #420c14;
+    background-color: var(--tan);
     text-align: center;
     font-family: sans-serif;
 }
@@ -9,7 +21,6 @@ body {
     max-width: 900px;
     margin: auto;
     padding: 30px;
-    box-shadow: 0 0 20px rgba(66, 12, 20, 0.3);
     border-radius: 8px;
 }
 
@@ -38,6 +49,50 @@ h1 {
     align-items: center;
     gap: 0px;
     margin-top: 10px;
+}
+
+#top-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: nowrap;
+    margin-bottom: 20px;
+    padding-inline: 10px;
+    width: 100%;
+    max-width: 1000px;
+    margin-inline: auto;
+}
+
+#score-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+#dart-container {
+    --size: 16vmin;
+    --specialFields: 0.7vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#header-and-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#hint-text{
+    color: orange;
+
 }
 
 /* Buttons */
@@ -110,10 +165,11 @@ h1 {
 /* Challenge section */
 
 #challenge-area {
-    background-color: #d8bfaa;
+    background-color: var(--light);
     padding: 20px;
     border-radius: 10px;
     margin-top: 20px;
+    border: 6px solid var(--green);
 }
 
 textarea {
@@ -134,9 +190,10 @@ textarea {
 #solution-text {
     margin-top: 10px;
     padding: 10px;
-    background-color: rgba(66, 12, 20, 0.8);
-    color: white;
+    color: var(--green);
     border-radius: 6px;
+    font-weight: bold;
+
 }
 
 .query-submit-container {
@@ -165,7 +222,6 @@ textarea {
 /* Data Tables */
 
 .table-container {
-    background-color: #d8bfaa;
     padding: 10px;
     margin-top: 15px;
     overflow-x: auto;
