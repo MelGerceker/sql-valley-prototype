@@ -32,6 +32,14 @@ h1 {
     flex-wrap: wrap;
 }
 
+.button-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+    margin-top: 10px;
+}
+
 /* Buttons */
 
 .node {
@@ -82,6 +90,20 @@ h1 {
 
 #show-solution-btn:hover,
 #toggle-table-btn:hover {
+    background-color: #004d4c;
+}
+
+#hint-btn {
+    background-color: #006A67;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#hint-btn:hover {
     background-color: #004d4c;
 }
 

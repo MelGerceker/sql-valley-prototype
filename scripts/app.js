@@ -15,7 +15,8 @@ const solutionText = document.getElementById("solution-text");
 const tableRef = document.getElementById("table-reference");
 const toggleBtn = document.getElementById("toggle-table-btn");
 const tableContainer = document.getElementById("table-reference");
-
+const hintBtn = document.getElementById("hint-btn");
+const hintText = document.getElementById("hint-text");
 
 // CTRL + Enter for submit button
 userInput.addEventListener("keydown", function (e) {
@@ -24,10 +25,6 @@ userInput.addEventListener("keydown", function (e) {
         submitBtn.click();
     }
 });
-
-//FIX: Bug with unlocking new skill
-// Third skill gets unlocked when solving the first challenge twice!!!
-
 
 // Event: Skill button clicked
 skillButtons.forEach((btn) => {
@@ -48,6 +45,9 @@ skillButtons.forEach((btn) => {
         solutionText.classList.add("hidden");
         solutionText.textContent = "";
 
+        hintText.classList.add("hidden");
+        hintText.textContent = "";
+
         challengeArea.classList.remove("hidden");
         renderTable(currentSkill);
         userInput.focus();
@@ -67,17 +67,6 @@ submitBtn.addEventListener("click", () => {
             "red";
 
     if (result.status === "full") {
-        /*
-        const nextBtn = [...skillButtons].find(
-            (btn) => btn.disabled && !btn.classList.contains("completed")
-        );
-        if (nextBtn) nextBtn.disabled = false;
-
-        const currentBtn = [...skillButtons].find(
-            (btn) => btn.dataset.skill === currentSkill
-        );
-        currentBtn.classList.add("completed");
-        */
         const currentBtn = [...skillButtons].find(
             (btn) => btn.dataset.skill === currentSkill
         );
@@ -107,6 +96,7 @@ submitBtn.addEventListener("click", () => {
     // Show solution button after an attempt
     showSolutionBtn.classList.remove("hidden");
     solutionText.classList.add("hidden");
+    hintText.classList.add("hidden");
 
 });
 
@@ -115,10 +105,32 @@ showSolutionBtn.addEventListener("click", () => {
     const solution = challenges[currentSkill].expected.answer;
     solutionText.textContent = `${solution}`;
     solutionText.classList.remove("hidden");
+    hintText.classList.add("hidden");
+
 });
 
 // Note: Show solutions button is not removed after correct solution is entered by the user.
 // This is due to allow explanations in the solutions in the future.
+
+// Event: Hint Button
+// TODO: Improve so that the hint text takes place of the show solution text.
+hintBtn.addEventListener("click", () => {
+    const answer = userInput.value.trim();
+    const expected = challenges[currentSkill].expected;
+    const result = validateSQL(answer, expected);
+
+    if (result.missing.length > 0) {
+        hintText.textContent = `Missing: ${result.missing.join(", ")}`;
+    } else if (result.extra.length > 0) {
+        hintText.textContent = `Extra: ${result.extra.join(", ")}`;
+    } else {
+        hintText.textContent = "No hints available.";
+        //Note: out of order case could be added here
+    }
+
+    hintText.classList.remove("hidden");
+    solutionText.classList.add("hidden");
+});
 
 // Renders Data Tables for Each Exercise
 function renderTable(skillKey) {

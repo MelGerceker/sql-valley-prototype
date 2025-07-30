@@ -12,10 +12,11 @@ A simple educational web app that simulates SQL challenges in a skill tree forma
 - Testing is done via JEST
 
 ### How to Use
-- Click on the first challenge: SELECT
-- Enter your answer via the submit button or Ctrl + Enter
+- Click on the first challenge: SELECT.
+- Enter your answer via the submit button or Ctrl + Enter.
 - You will get precise feedback on your answer. Explaining wheter you have missing, extra or out of order queries.
-- You also have the option to show the answer to the question
+- Hint button will show specifically which keywords are missing or extra.
+- You also have the option to show the answer to the question.
 
 ### How I Made Learning Engaging
 
