@@ -1,6 +1,7 @@
 let currentSkill = null;
 const skillOrder = ["select", "where", "join"];
 const completedSkills = new Set();
+let dartsThrown = 0;
 
 const skillButtons = document.querySelectorAll(".node");
 const challengeArea = document.getElementById("challenge-area");
@@ -18,7 +19,8 @@ const hintBtn = document.getElementById("hint-btn");
 const hintText = document.getElementById("hint-text");
 const menuToggle = document.getElementById("menu-toggle");
 const menuPanel = document.getElementById("menu-panel");
-const closeMenuBtn = document.getElementById("close-menu");
+const menuOverlay = document.getElementById("menu-overlay");
+const dartsThrownElement = document.getElementById("darts-thrown");
 
 // CTRL + Enter for submit button
 userInput.addEventListener("keydown", function (e) {
@@ -79,6 +81,9 @@ submitBtn.addEventListener("click", () => {
         );
         currentBtn.classList.add("completed");
         completedSkills.add(currentSkill);
+
+        dartsThrown++;
+        dartsThrownElement.textContent = dartsThrown;
 
         // Unlock next skill if previous one is completed
         const currentIndex = skillOrder.indexOf(currentSkill);
@@ -163,14 +168,31 @@ function isMobile() {
     return window.innerWidth <= 768;
 }
 
-menuToggle.addEventListener("click", () => {
+function openMenu() {
+    menuOverlay.classList.remove("hidden");
     if (isMobile()) {
-        menuPanel.classList.toggle("open-mobile");
+        menuPanel.classList.add("open-mobile");
     } else {
-        menuPanel.classList.toggle("open-desktop");
+        menuPanel.classList.add("open-desktop");
+    }
+}
+
+function closeMenu() {
+    menuOverlay.classList.add("hidden");
+    menuPanel.classList.remove("open-mobile", "open-desktop");
+}
+
+// Open on toggle icon click
+menuToggle.addEventListener("click", openMenu);
+
+// Close when clicking outside the menu panel / on Escape key
+menuOverlay.addEventListener("click", (e) => {
+    if (e.target === menuOverlay) {
+        closeMenu();
     }
 });
-
-closeMenuBtn.addEventListener("click", () => {
-    menuPanel.classList.remove("open-desktop", "open-mobile");
-});
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !menuOverlay.classList.contains("hidden")) {
+        closeMenu();
+    }
+})

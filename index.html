@@ -66,22 +66,18 @@
         <img src="assets/dart.png" alt="Menu" />
     </div>
 
-    <div id="menu-panel">
-        <div id="menu-content">
-            
-            <div id="dart-container"> </div>
+    <div id="menu-overlay" class="hidden">
+        <div id="menu-panel">
+            <div id="menu-content">
+                <div id="dart-container"></div>
 
-            <div class="menu-stat">🎯 Darts Thrown: <span id="darts-thrown">0</span></div>
+                <div class="menu-stat">Darts Thrown: <span id="darts-thrown">0</span></div>
+                <div class="menu-stat" id="accuracy">Accuracy: 0%</div>
+                <div class="menu-stat" id="average">Avg: 0%</div>
 
-            <div id="score-sidebar">
-                <div id="accuracy">🎯 Accuracy: 0%</div>
-                <div id="average">🎯 Avg: 0%</div>
             </div>
-
-            <button id="close-menu">X</button>
         </div>
     </div>
-
 
     <script src="scripts/challenges.js"></script>
     <script src="scripts/dartGame.js"></script>
