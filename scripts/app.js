@@ -2,6 +2,8 @@ let currentSkill = null;
 const skillOrder = ["select", "where", "join"];
 const completedSkills = new Set();
 let dartsThrown = 0;
+let missingTokens = [];
+let revealedIndex = 0;
 
 const skillButtons = document.querySelectorAll(".node");
 const challengeArea = document.getElementById("challenge-area");
@@ -16,11 +18,16 @@ const tableRef = document.getElementById("table-reference");
 const toggleBtn = document.getElementById("toggle-table-btn");
 const tableContainer = document.getElementById("table-reference");
 const hintBtn = document.getElementById("hint-btn");
-const hintText = document.getElementById("hint-text");
 const menuToggle = document.getElementById("menu-toggle");
 const menuPanel = document.getElementById("menu-panel");
 const menuOverlay = document.getElementById("menu-overlay");
 const dartsThrownElement = document.getElementById("darts-thrown");
+
+const hintRevealContainer = document.getElementById("hint-reveal");
+const hintKeywordDisplay = document.getElementById("hint-keyword-display");
+const revealNextBtn = document.getElementById("reveal-next-hint");
+const querySubmitContainer = document.querySelector(".query-submit-container");
+
 
 // CTRL + Enter for submit button
 userInput.addEventListener("keydown", function (e) {
@@ -54,8 +61,6 @@ skillButtons.forEach((btn) => {
         solutionText.classList.add("hidden");
         solutionText.textContent = "";
 
-        hintText.classList.add("hidden");
-        hintText.textContent = "";
 
         challengeArea.classList.remove("hidden");
         renderTable(currentSkill);
@@ -108,7 +113,6 @@ submitBtn.addEventListener("click", () => {
     // Show solution button after an attempt
     showSolutionBtn.classList.remove("hidden");
     solutionText.classList.add("hidden");
-    hintText.classList.add("hidden");
 
 });
 
@@ -118,6 +122,8 @@ showSolutionBtn.addEventListener("click", () => {
     solutionText.textContent = `${solution}`;
     solutionText.style.color = "var(--green)";
     solutionText.classList.remove("hidden");
+
+    hintRevealContainer.classList.add("hidden");
 });
 
 
@@ -125,6 +131,49 @@ showSolutionBtn.addEventListener("click", () => {
 // This is due to allow explanations in the solutions in the future.
 
 // Event: Hint Button
+
+hintRevealContainer.id = "hint-reveal";
+hintRevealContainer.classList.add("hidden");
+hintKeywordDisplay.id = "hint-keyword-display";
+revealNextBtn.id = "reveal-next-hint";
+revealNextBtn.textContent = "→";
+
+querySubmitContainer.appendChild(hintRevealContainer);
+
+// Reveal button handler
+revealNextBtn.addEventListener("click", () => {
+    if (revealedIndex < missingTokens.length) {
+        hintKeywordDisplay.textContent = `${missingTokens[revealedIndex]}, ${revealedIndex + 1}/${missingTokens.length}`;
+        revealedIndex++;
+    }
+    if (revealedIndex >= missingTokens.length) {
+        revealNextBtn.disabled = true;
+    }
+});
+
+hintBtn.addEventListener("click", () => {
+    const answer = userInput.value.trim();
+    const expected = challenges[currentSkill].expected;
+    const result = validateSQL(answer, expected);
+
+    if (result.missing.length > 0) {
+        missingTokens = result.missing;
+        revealedIndex = 0;
+
+        hintRevealContainer.classList.remove("hidden");
+        hintKeywordDisplay.textContent = `You have ${missingTokens.length} missing token(s). Click → to reveal.`;
+        revealNextBtn.disabled = false;
+
+        solutionText.classList.add("hidden");
+    } else {
+        hintRevealContainer.classList.add("hidden");
+        solutionText.textContent = "No hints available.";
+        solutionText.style.color = "orange";
+        solutionText.classList.remove("hidden");
+    }
+});
+
+/*
 hintBtn.addEventListener("click", () => {
     const answer = userInput.value.trim();
     const expected = challenges[currentSkill].expected;
@@ -143,6 +192,7 @@ hintBtn.addEventListener("click", () => {
     solutionText.style.color = "orange";
     solutionText.classList.remove("hidden");
 });
+*/
 
 
 // Renders Data Tables for Each Exercise

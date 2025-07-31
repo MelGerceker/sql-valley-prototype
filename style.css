@@ -241,6 +241,15 @@ textarea,
     margin-top: 10px;
 }
 
+#hint-reveal {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    color: var(--orange);
+}
+
+
 /* Buttons */
 
 .button-stack {
