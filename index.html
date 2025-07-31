@@ -14,7 +14,6 @@
     <div class="main-container">
 
         <div id="top-bar">
-            <div id="dart-container"> </div>
 
             <div id="header-and-buttons">
                 <h1>SQL Skill Tree Trainer</h1>
@@ -25,10 +24,6 @@
                 </div>
             </div>
 
-            <div id="score-sidebar">
-                <div id="accuracy">🎯 Accuracy: 0%</div>
-                <div id="average">🎯 Avg: 0%</div>
-            </div>
         </div>
 
     </div>
@@ -67,6 +62,27 @@
         <img id="dart-target" src="assets/target.svg" alt="Target">
     </div>
 
+    <div id="menu-toggle">
+        <img src="assets/dart.png" alt="Menu" />
+    </div>
+
+    <div id="menu-panel">
+        <div id="menu-content">
+            
+            <div id="dart-container"> </div>
+
+            <div class="menu-stat">🎯 Darts Thrown: <span id="darts-thrown">0</span></div>
+
+            <div id="score-sidebar">
+                <div id="accuracy">🎯 Accuracy: 0%</div>
+                <div id="average">🎯 Avg: 0%</div>
+            </div>
+
+            <button id="close-menu">X</button>
+        </div>
+    </div>
+
+
     <script src="scripts/challenges.js"></script>
     <script src="scripts/dartGame.js"></script>
     <script src="scripts/validator.js"></script>
@@ -79,7 +95,6 @@
                 document.getElementById("dart-container").innerHTML = html;
             });
     </script>
-
 
 </body>
 

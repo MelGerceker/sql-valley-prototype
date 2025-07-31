@@ -2,7 +2,6 @@ let currentSkill = null;
 const skillOrder = ["select", "where", "join"];
 const completedSkills = new Set();
 
-// DOM elements
 const skillButtons = document.querySelectorAll(".node");
 const challengeArea = document.getElementById("challenge-area");
 const challengeTitle = document.getElementById("challenge-title");
@@ -17,6 +16,9 @@ const toggleBtn = document.getElementById("toggle-table-btn");
 const tableContainer = document.getElementById("table-reference");
 const hintBtn = document.getElementById("hint-btn");
 const hintText = document.getElementById("hint-text");
+const menuToggle = document.getElementById("menu-toggle");
+const menuPanel = document.getElementById("menu-panel");
+const closeMenuBtn = document.getElementById("close-menu");
 
 // CTRL + Enter for submit button
 userInput.addEventListener("keydown", function (e) {
@@ -32,6 +34,11 @@ skillButtons.forEach((btn) => {
         //console.log("Clicked:", btn.dataset.skill);
 
         currentSkill = btn.dataset.skill;
+
+        skillButtons.forEach(b => b.classList.remove("current"));
+        btn.classList.add("current");
+
+
         const challenge = challenges[currentSkill];
         if (!challenge) return; // avoid errors
 
@@ -148,4 +155,22 @@ function renderTable(skillKey) {
 toggleBtn.addEventListener('click', () => {
     const isHidden = tableContainer.classList.toggle('hidden');
     toggleBtn.textContent = isHidden ? '► Show Table' : '▼ Hide Table';
+});
+
+
+// Slider Menu
+function isMobile() {
+    return window.innerWidth <= 768;
+}
+
+menuToggle.addEventListener("click", () => {
+    if (isMobile()) {
+        menuPanel.classList.toggle("open-mobile");
+    } else {
+        menuPanel.classList.toggle("open-desktop");
+    }
+});
+
+closeMenuBtn.addEventListener("click", () => {
+    menuPanel.classList.remove("open-desktop", "open-mobile");
 });
