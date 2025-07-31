@@ -9,19 +9,11 @@
     --orange: orange;
 }
 
-
 body {
     margin: 30px;
     background-color: var(--tan);
     text-align: center;
     font-family: sans-serif;
-}
-
-#main-container {
-    max-width: 900px;
-    margin: auto;
-    padding: 30px;
-    border-radius: 8px;
 }
 
 h1 {
@@ -34,30 +26,13 @@ h1 {
     margin: auto;
 }
 
-#skill-tree.flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    margin: 10px 0;
-    flex-wrap: wrap;
-}
+/* Layout */
 
-.description-and-toggle {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-
-.button-stack {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0px;
-    margin-top: 10px;
+#main-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 8px;
 }
 
 #top-bar {
@@ -73,26 +48,6 @@ h1 {
     margin-inline: auto;
 }
 
-#score-sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    background-color: rgba(0, 0, 0, 0.75);
-    color: white;
-    padding: 10px;
-    border-radius: 6px;
-    font-size: 14px;
-    text-align: left;
-}
-
-#dart-container {
-    --size: 16vmin;
-    --specialFields: 0.7vmin;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 #header-and-buttons {
     display: flex;
     flex-direction: column;
@@ -100,12 +55,16 @@ h1 {
     gap: 10px;
 }
 
-#hint-text {
-    color: orange;
+/* Skill Buttons */
 
+#skill-tree.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+    flex-wrap: wrap;
 }
-
-/* Buttons */
 
 .node {
     background-color: #D64045;
@@ -130,22 +89,85 @@ h1 {
     cursor: not-allowed;
 }
 
-.table-toggle-container {
+/* Score Sidebar */
+
+#score-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: left;
+}
+
+/* Challenge Area */
+
+#challenge-area {
+    background-color: var(--light);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    border: 6px solid var(--green);
+    max-width: 900px;
+    justify-content: center;
+    margin-inline: auto;
+}
+
+.description-and-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.query-submit-container {
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: nowrap;
+}
+
+textarea, #user-input {
+    width: 90%;
+    max-width: 600px;
+    height: 60px;
+    font-family: monospace;
+    border: 2px solid var(--brownish);
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* Buttons */
+
+.button-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px;
+    margin-top: 10px;
 }
 
 #submit-btn,
-#show-solution-btn {
-    background-color: #006A67;
+#show-solution-btn,  #hint-btn{
+    background-color: var(--darkgreen);
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 6px;
     font-size: 15px;
     cursor: pointer;
-    margin-top: 10px;
+}
+
+#hint-btn {
+    align-self: flex-start;
+    margin-bottom: 5px;
 }
 
 #toggle-table-btn {
@@ -165,47 +187,11 @@ h1 {
 }
 
 #show-solution-btn:hover,
-#submit-solution-btn:hover {
+#submit-solution-btn:hover, #hint-btn:hover {
     background-color: #004d4c;
 }
 
-#hint-btn {
-    background-color: #006A67;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-size: 15px;
-    cursor: pointer;
-    align-self: flex-start;
-}
-
-#hint-btn:hover {
-    background-color: #004d4c;
-}
-
-/* Challenge section */
-
-#challenge-area {
-    background-color: var(--light);
-    padding: 20px;
-    border-radius: 10px;
-    margin-top: 20px;
-    border: 6px solid var(--green);
-    max-width: 900px;
-    justify-content: center;
-    margin-inline: auto;
-}
-
-textarea {
-    width: 90%;
-    height: 100px;
-    margin-top: 10px;
-    font-family: monospace;
-    border: 1px solid #aaa;
-    border-radius: 5px;
-    padding: 10px;
-}
+/* Solution and Feedback */
 
 #feedback {
     margin-top: 15px;
@@ -215,33 +201,9 @@ textarea {
 #solution-text {
     margin-top: 10px;
     padding: 10px;
-    color: var(--green);
     border-radius: 6px;
     font-weight: bold;
 
-}
-
-.query-submit-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 10px;
-    margin-top: 20px;
-    flex-wrap: nowrap;
-}
-
-#user-input {
-    width: 100%;
-    max-width: 600px;
-    height: 60px;
-    font-family: monospace;
-    border: 2px solid #420c14;
-    border-radius: 5px;
-    padding: 10px;
-}
-
-.hidden {
-    display: none;
 }
 
 /* Data Tables */
@@ -275,6 +237,7 @@ textarea {
     font-weight: bold;
 }
 
+/* multiple tables in join challenge */
 .sql-joined-tables {
     display: flex;
     justify-content: center;
@@ -302,6 +265,14 @@ textarea {
 
 /* Dart Game */
 
+#dart-container {
+    --size: 16vmin;
+    --specialFields: 0.7vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #dart-game {
     position: relative;
     width: 100vw;
@@ -316,34 +287,16 @@ textarea {
     display: none !important;
 }
 
-#score-ui {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background-color: rgba(0, 0, 0, 0.75);
-    color: white;
-    padding: 10px 15px;
-    border-radius: 6px;
-    font-size: 14px;
-    z-index: 9999;
-    display: flex;
-    gap: 10px;
-}
-
-#score-ui.hidden {
-    display: none;
-}
-
-#score-ui.static {
-    position: static;
-    margin-top: 15px;
-    justify-content: center;
-}
-
 #dart-target {
     position: absolute;
     width: 100px;
     height: 100px;
     pointer-events: auto;
     cursor: crosshair;
+}
+
+/* Misc */
+
+.hidden {
+    display: none;
 }

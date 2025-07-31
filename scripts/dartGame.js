@@ -4,7 +4,7 @@ let dartTimeout;
 
 const dartGame = document.getElementById("dart-game");
 const dartTarget = document.getElementById("dart-target");
-const scoreBox = document.getElementById("score-ui");
+//const scoreBox = document.getElementById("score-ui");
 const accuracyText = document.getElementById("accuracy");
 const avgText = document.getElementById("average");
 
@@ -14,28 +14,15 @@ function updateScoreUI(accuracy) {
     avgText.textContent = `🎯 Avg: ${avg}%`;
 }
 
-function setScorePositionFloating(floating = true) {
-    if (floating) {
-        scoreBox.classList.remove("static");
-        scoreBox.classList.remove("hidden");
-    } else {
-        scoreBox.classList.add("static");
-        scoreBox.classList.remove("hidden");
-    }
-}
-
 function hideDartGame() {
     document.body.style.overflow = '';
     dartGame.classList.add("hidden");
-    setScorePositionFloating(false);
 }
 
 function startDartGame() {
     challengeArea.classList.add("hidden");
     dartGame.classList.remove("hidden");
     dartTarget.style.display = "block";
-
-    setScorePositionFloating(true);
 
     // Avoid placement bugs and overflow
     window.scrollTo(0, 0); 

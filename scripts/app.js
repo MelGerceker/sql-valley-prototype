@@ -104,6 +104,7 @@ submitBtn.addEventListener("click", () => {
 showSolutionBtn.addEventListener("click", () => {
     const solution = challenges[currentSkill].expected.answer;
     solutionText.textContent = `${solution}`;
+    solutionText.style.color = "var(--green)";
     solutionText.classList.remove("hidden");
 });
 
@@ -127,6 +128,7 @@ hintBtn.addEventListener("click", () => {
     }
 
     solutionText.textContent = hintMessage;
+    solutionText.style.color = "orange";
     solutionText.classList.remove("hidden");
 });
 
