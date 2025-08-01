@@ -42,13 +42,33 @@
 
         <div class="query-submit-container">
 
-            <textarea id="user-input" placeholder="Write your SQL query here..."></textarea>
-            <div class="button-stack">
-                <button id="hint-btn">Hint</button>
-                <button id="submit-btn">Submit</button>
+            <div class="input-button-wrapper">
+
+
+                <textarea id="user-input" placeholder="Write your SQL query here..."></textarea>
+
+                <div class="right-side-column">
+                    <button id="hint-btn">Hint</button>
+                    <button id="submit-btn">Submit</button>
+                </div>
+            </div>
+
+            <p id="feedback"></p>
+            <button id="show-solution-btn" class="hidden">Show Solution</button>
+            <p id="solution-text" class="hidden"></p>
+
+
+            <div id="hint-reveal" class="hidden">
+                <span id="hint-keyword-display"></span>
+                <button id="reveal-next-hint">→</button>
             </div>
         </div>
 
+
+
+    </div>
+
+    <!--
         <p id="feedback"></p>
 
         <button id="show-solution-btn" class="hidden">Show Solution</button>
@@ -58,6 +78,7 @@
             <span id="hint-keyword-display"></span>
             <button id="reveal-next-hint">→</button>
         </div>
+-->
 
     </div>
 

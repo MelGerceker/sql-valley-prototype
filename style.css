@@ -137,13 +137,12 @@ h1 {
     height: 100vh;
     width: 100vw;
     z-index: 9997;
-    background: rgba(0, 0, 0, 0.1); /* subtle dimming */
+    background: rgba(0, 0, 0, 0.1);
 }
 
 #menu-overlay.hidden {
     display: none;
 }
-
 
 
 /* Skill Buttons */
@@ -218,15 +217,6 @@ h1 {
     gap: 10px;
     justify-content: center;
     flex-wrap: wrap;
-}
-
-.query-submit-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 10px;
-    margin-top: 20px;
-    flex-wrap: nowrap;
 }
 
 textarea,
@@ -311,7 +301,56 @@ textarea,
     padding: 10px;
     border-radius: 6px;
     font-weight: bold;
+}
 
+
+.query-submit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.input-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 700px;
+    margin-inline: auto;
+}
+
+.right-side-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.after-submit-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    gap: 12px;
+}
+
+#reveal-next-hint {
+    background-color: var(--green);
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#reveal-next-hint:hover {
+    background-color: #428c45;
 }
 
 /* Data Tables */

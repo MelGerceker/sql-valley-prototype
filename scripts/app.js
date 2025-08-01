@@ -138,7 +138,7 @@ hintKeywordDisplay.id = "hint-keyword-display";
 revealNextBtn.id = "reveal-next-hint";
 revealNextBtn.textContent = "→";
 
-querySubmitContainer.appendChild(hintRevealContainer);
+//querySubmitContainer.appendChild(hintRevealContainer);
 
 // Reveal button handler
 revealNextBtn.addEventListener("click", () => {
@@ -161,10 +161,18 @@ hintBtn.addEventListener("click", () => {
         revealedIndex = 0;
 
         hintRevealContainer.classList.remove("hidden");
-        hintKeywordDisplay.textContent = `You have ${missingTokens.length} missing token(s). Click → to reveal.`;
+        hintKeywordDisplay.textContent = `You have ${missingTokens.length} missing token(s).`;
         revealNextBtn.disabled = false;
 
         solutionText.classList.add("hidden");
+    } else if (result.extra.length > 0) {
+        hintRevealContainer.classList.add("hidden");
+
+        const extraHint = `Extra: ${result.extra.join(", ")}`;
+        solutionText.textContent = extraHint;
+        solutionText.style.color = "orange";
+        solutionText.classList.remove("hidden");
+
     } else {
         hintRevealContainer.classList.add("hidden");
         solutionText.textContent = "No hints available.";
@@ -172,28 +180,6 @@ hintBtn.addEventListener("click", () => {
         solutionText.classList.remove("hidden");
     }
 });
-
-/*
-hintBtn.addEventListener("click", () => {
-    const answer = userInput.value.trim();
-    const expected = challenges[currentSkill].expected;
-    const result = validateSQL(answer, expected);
-
-    let hintMessage = "";
-    if (result.missing.length > 0) {
-        hintMessage = `Missing: ${result.missing.join(", ")}`;
-    } else if (result.extra.length > 0) {
-        hintMessage = `Extra: ${result.extra.join(", ")}`;
-    } else {
-        hintMessage = "No hints available.";
-    }
-
-    solutionText.textContent = hintMessage;
-    solutionText.style.color = "orange";
-    solutionText.classList.remove("hidden");
-});
-*/
-
 
 // Renders Data Tables for Each Exercise
 function renderTable(skillKey) {
