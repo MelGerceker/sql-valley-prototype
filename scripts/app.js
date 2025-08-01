@@ -85,27 +85,54 @@ submitBtn.addEventListener("click", () => {
             (btn) => btn.dataset.skill === currentSkill
         );
         currentBtn.classList.add("completed");
-        completedSkills.add(currentSkill);
 
-        dartsThrown++;
-        dartsThrownElement.textContent = dartsThrown;
+        const isFirstTime = !completedSkills.has(currentSkill);
 
-        // Unlock next skill if previous one is completed
-        const currentIndex = skillOrder.indexOf(currentSkill);
-        const nextSkill = skillOrder[currentIndex + 1];
+        if (isFirstTime) {
+            completedSkills.add(currentSkill);
+            dartsThrown++;
+            dartsThrownElement.textContent = dartsThrown;
 
-        if (nextSkill && !completedSkills.has(nextSkill)) {
-            const nextBtn = [...skillButtons].find(
-                (btn) => btn.dataset.skill === nextSkill
-            );
-            if (nextBtn) nextBtn.disabled = false;
+            // Unlock next skill if previous one is completed
+            const currentIndex = skillOrder.indexOf(currentSkill);
+            const nextSkill = skillOrder[currentIndex + 1];
+
+            if (nextSkill && !completedSkills.has(nextSkill)) {
+                const nextBtn = [...skillButtons].find(
+                    (btn) => btn.dataset.skill === nextSkill
+                );
+                if (nextBtn) nextBtn.disabled = false;
+            }
         }
 
-
+        /*
+            if (result.status === "full") {
+                const currentBtn = [...skillButtons].find(
+                    (btn) => btn.dataset.skill === currentSkill
+                );
+                currentBtn.classList.add("completed");
+        
+                completedSkills.add(currentSkill);
+        
+                dartsThrown++;
+                dartsThrownElement.textContent = dartsThrown;
+        
+                // Unlock next skill if previous one is completed
+                const currentIndex = skillOrder.indexOf(currentSkill);
+                const nextSkill = skillOrder[currentIndex + 1];
+        
+                if (nextSkill && !completedSkills.has(nextSkill)) {
+                    const nextBtn = [...skillButtons].find(
+                        (btn) => btn.dataset.skill === nextSkill
+                    );
+                    if (nextBtn) nextBtn.disabled = false;
+                }
+        
+        */
         // Start dart game
         setTimeout(() => {
             startDartGame();
-            dartScoreText.style.display = "block";
+            //dartScoreText.style.display = "block";
         }, 1000);
 
     }
@@ -201,28 +228,28 @@ toggleBtn.addEventListener('click', () => {
 
 // Slider Menu
 function isMobile() {
-  return window.innerWidth <= 768;
+    return window.innerWidth <= 768;
 }
 
 function openMenu() {
-  overlay.classList.add("is-open");
-  panel.classList.add(isMobile() ? "is-mobile-open" : "is-desktop-open");
+    overlay.classList.add("is-open");
+    panel.classList.add(isMobile() ? "is-mobile-open" : "is-desktop-open");
 }
 
 function closeMenu() {
-  overlay.classList.remove("is-open");
-  panel.classList.remove("is-mobile-open", "is-desktop-open");
+    overlay.classList.remove("is-open");
+    panel.classList.remove("is-mobile-open", "is-desktop-open");
 }
 
 toggle.addEventListener("click", openMenu);
 
 // Close when clicking outside the menu panel / on Escape key
 overlay.addEventListener("click", (e) => {
-  if (e.target === overlay) closeMenu();
+    if (e.target === overlay) closeMenu();
 });
 
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && overlay.classList.contains("is-open")) {
-    closeMenu();
-  }
+    if (e.key === "Escape" && overlay.classList.contains("is-open")) {
+        closeMenu();
+    }
 });

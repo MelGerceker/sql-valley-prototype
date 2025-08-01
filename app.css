@@ -167,13 +167,13 @@ textarea,
 }
 
 #dart-game {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    z-index: 99999;
+    background: var(--tan);
 }
 
 #dart-game.hidden {
@@ -181,11 +181,19 @@ textarea,
 }
 
 #dart-target {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    pointer-events: auto;
-    cursor: crosshair;
+  --size: 19vmin;
+  --specialFields: 0.7vmin;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  pointer-events: auto;
+  cursor: crosshair;
+
 }
 
 /* Misc */

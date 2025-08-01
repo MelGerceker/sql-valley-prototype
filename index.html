@@ -61,7 +61,7 @@
 
 
     <div id="dart-game" class="hidden">
-        <img id="dart-target" src="assets/target.svg" alt="Target">
+        <div id="dart-target"></div>
     </div>
 
     <div class="menu__toggle">
@@ -88,6 +88,9 @@
             .then((res) => res.text())
             .then((html) => {
                 document.getElementById("dart-container").innerHTML = html;
+                document.getElementById("dart-target").innerHTML = html;
+
+                //console.log("Dartboard content in target:", document.getElementById("dart-target").innerHTML);
             });
     </script>
 
