@@ -71,8 +71,6 @@ function enableUI() {
     });
 }
 
-
-
 // Handle click/aim of user
 document.addEventListener("click", (e) => {
     if (

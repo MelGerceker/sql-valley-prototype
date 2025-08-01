@@ -61,7 +61,6 @@ skillButtons.forEach((btn) => {
         solutionText.classList.add("hidden");
         solutionText.textContent = "";
 
-
         challengeArea.classList.remove("hidden");
         renderTable(currentSkill);
         userInput.focus();
@@ -105,36 +104,10 @@ submitBtn.addEventListener("click", () => {
             }
         }
 
-        /*
-            if (result.status === "full") {
-                const currentBtn = [...skillButtons].find(
-                    (btn) => btn.dataset.skill === currentSkill
-                );
-                currentBtn.classList.add("completed");
-        
-                completedSkills.add(currentSkill);
-        
-                dartsThrown++;
-                dartsThrownElement.textContent = dartsThrown;
-        
-                // Unlock next skill if previous one is completed
-                const currentIndex = skillOrder.indexOf(currentSkill);
-                const nextSkill = skillOrder[currentIndex + 1];
-        
-                if (nextSkill && !completedSkills.has(nextSkill)) {
-                    const nextBtn = [...skillButtons].find(
-                        (btn) => btn.dataset.skill === nextSkill
-                    );
-                    if (nextBtn) nextBtn.disabled = false;
-                }
-        
-        */
         // Start dart game
         setTimeout(() => {
             startDartGame();
-            //dartScoreText.style.display = "block";
         }, 1000);
-
     }
 
     // Show solution button after an attempt
@@ -158,14 +131,11 @@ showSolutionBtn.addEventListener("click", () => {
 // This is due to allow explanations in the solutions in the future.
 
 // Event: Hint Button
-
 hintRevealContainer.id = "hint-reveal";
 hintRevealContainer.classList.add("hidden");
 hintKeywordDisplay.id = "hint-keyword-display";
 revealNextBtn.id = "reveal-next-hint";
 revealNextBtn.textContent = "→";
-
-//querySubmitContainer.appendChild(hintRevealContainer);
 
 // Reveal button handler
 revealNextBtn.addEventListener("click", () => {

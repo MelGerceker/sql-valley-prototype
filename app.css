@@ -14,13 +14,17 @@
 
 #challenge-area {
     background-color: var(--light);
-    padding: 20px;
+    padding: 10px;
     border-radius: 10px;
-    margin-top: 10px;
     border: 6px solid var(--green);
     max-width: 900px;
     justify-content: center;
     margin-inline: auto;
+}
+
+#challenge-title {
+    margin-top: 15px;
+    margin-bottom: 5px;
 }
 
 .description-and-toggle {
@@ -40,7 +44,6 @@ textarea,
     border: 2px solid var(--brownish);
     border-radius: 5px;
     padding: 10px;
-    margin-top: 10px;
 }
 
 /* Other Buttons */
@@ -70,7 +73,6 @@ textarea,
     border-radius: 6px;
     font-size: 15px;
     cursor: pointer;
-    margin-top: 10px;
     margin-right: 10px;
 }
 
@@ -102,7 +104,6 @@ textarea,
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
     margin-top: 20px;
 }
 
@@ -120,8 +121,6 @@ textarea,
 .right-side-column {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
 }
 
 .after-submit-info {
@@ -181,18 +180,18 @@ textarea,
 }
 
 #dart-target {
-  --size: 19vmin;
-  --specialFields: 0.7vmin;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
+    --size: 19vmin;
+    --specialFields: 0.7vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
 
-  position: absolute;
-  width: 100px;
-  height: 100px;
-  pointer-events: auto;
-  cursor: crosshair;
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    pointer-events: auto;
+    cursor: crosshair;
 
 }
 
