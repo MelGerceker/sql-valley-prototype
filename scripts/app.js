@@ -18,9 +18,6 @@ const tableRef = document.getElementById("table-reference");
 const toggleBtn = document.getElementById("toggle-table-btn");
 const tableContainer = document.getElementById("table-reference");
 const hintBtn = document.getElementById("hint-btn");
-const menuToggle = document.getElementById("menu-toggle");
-const menuPanel = document.getElementById("menu-panel");
-const menuOverlay = document.getElementById("menu-overlay");
 const dartsThrownElement = document.getElementById("darts-thrown");
 
 const hintRevealContainer = document.getElementById("hint-reveal");
@@ -28,6 +25,9 @@ const hintKeywordDisplay = document.getElementById("hint-keyword-display");
 const revealNextBtn = document.getElementById("reveal-next-hint");
 const querySubmitContainer = document.querySelector(".query-submit-container");
 
+const toggle = document.querySelector(".menu__toggle");
+const overlay = document.querySelector(".menu__overlay");
+const panel = document.querySelector(".menu__panel");
 
 // CTRL + Enter for submit button
 userInput.addEventListener("keydown", function (e) {
@@ -201,34 +201,28 @@ toggleBtn.addEventListener('click', () => {
 
 // Slider Menu
 function isMobile() {
-    return window.innerWidth <= 768;
+  return window.innerWidth <= 768;
 }
 
 function openMenu() {
-    menuOverlay.classList.remove("hidden");
-    if (isMobile()) {
-        menuPanel.classList.add("open-mobile");
-    } else {
-        menuPanel.classList.add("open-desktop");
-    }
+  overlay.classList.add("is-open");
+  panel.classList.add(isMobile() ? "is-mobile-open" : "is-desktop-open");
 }
 
 function closeMenu() {
-    menuOverlay.classList.add("hidden");
-    menuPanel.classList.remove("open-mobile", "open-desktop");
+  overlay.classList.remove("is-open");
+  panel.classList.remove("is-mobile-open", "is-desktop-open");
 }
 
-// Open on toggle icon click
-menuToggle.addEventListener("click", openMenu);
+toggle.addEventListener("click", openMenu);
 
 // Close when clicking outside the menu panel / on Escape key
-menuOverlay.addEventListener("click", (e) => {
-    if (e.target === menuOverlay) {
-        closeMenu();
-    }
+overlay.addEventListener("click", (e) => {
+  if (e.target === overlay) closeMenu();
 });
+
 document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && !menuOverlay.classList.contains("hidden")) {
-        closeMenu();
-    }
-})
+  if (e.key === "Escape" && overlay.classList.contains("is-open")) {
+    closeMenu();
+  }
+});

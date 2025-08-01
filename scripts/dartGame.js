@@ -4,7 +4,6 @@ let dartTimeout;
 
 const dartGame = document.getElementById("dart-game");
 const dartTarget = document.getElementById("dart-target");
-//const scoreBox = document.getElementById("score-ui");
 const accuracyText = document.getElementById("accuracy");
 const avgText = document.getElementById("average");
 
@@ -25,7 +24,7 @@ function startDartGame() {
     dartTarget.style.display = "block";
 
     // Avoid placement bugs and overflow
-    window.scrollTo(0, 0); 
+    window.scrollTo(0, 0);
     document.body.style.overflow = 'hidden';
 
     const targetSize = 300; // temp solution
@@ -55,10 +54,11 @@ function startDartGame() {
 
 // Handle click/aim of user
 document.addEventListener("click", (e) => {
-    if (dartGame.classList.contains("hidden")) return;
-    if (dartTarget.style.display === "none") return;
-    if (!dartTarget.contains(e.target)) return;
-
+    if (
+        dartGame.classList.contains("hidden") ||
+        dartTarget.style.display === "none" ||
+        !dartTarget.contains(e.target)
+    ) return;
     clearTimeout(dartTimeout); // cancel dart removal
 
     const targetRect = dartTarget.getBoundingClientRect();

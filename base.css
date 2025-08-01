@@ -1,0 +1,228 @@
+:root {
+    --green: #57a75a;
+    --light: #FCE7CF;
+    --brownish: #420c14;
+    --red: #D64045;
+    --darkgreen: #006A67;
+    --tan: #F2D4B2;
+    --orange: orange;
+}
+
+/* Includes general layout, menu, skill buttons, and data tables */
+
+body {
+    margin: 30px;
+    background-color: var(--tan);
+    text-align: center;
+    font-family: sans-serif;
+}
+
+h1 {
+    background-color: var(--darkgreen);
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 2rem;
+    width: 350px;
+    margin: auto;
+}
+
+/* General Layout */
+
+.skill-header {
+    max-width: 900px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 8px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
+.menu__overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+/* Sliding Menu */
+.menu__toggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.menu__toggle img {
+  width: 36px;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.menu__toggle img:hover {
+  opacity: 1;
+}
+
+.menu__overlay.is-open {
+  display: block;
+}
+
+.menu__panel {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 280px;
+  background-color: var(--light);
+  color: var(--darkgreen);
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+  z-index: 101;
+}
+
+.menu__panel.is-desktop-open {
+  transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+  .menu__panel {
+    bottom: 0;
+    top: auto;
+    width: 100%;
+    height: 240px;
+    border-top: 3px solid var(--orange);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(100%);
+  }
+
+  .menu__panel.is-mobile-open {
+    transform: translateY(0);
+  }
+}
+
+.menu__stat {
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+
+/* Skill Buttons */
+
+.node {
+    background-color: var(--red);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 25px;
+    font-size: 1rem;
+    margin: 10px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.node:hover {
+    background-color: #a93132;
+}
+
+.node:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+.node.current {
+    border: 3px solid white;
+    animation: colorFade 6s infinite;
+}
+
+@keyframes colorFade {
+    0% {
+        background-color: var(--red);
+    }
+
+    50% {
+        background-color: #ff6a5c;
+    }
+
+    100% {
+        background-color: var(--red);
+    }
+}
+
+
+/* Data Tables */
+
+.table-container {
+    padding: 10px;
+    margin-top: 15px;
+    overflow-x: auto;
+    border-radius: 6px;
+    margin-inline: auto;
+    max-width: 720px;
+}
+
+.sql-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #f6eee7;
+
+}
+
+.sql-table th,
+.sql-table td {
+    border: 1px solid var(--brownish);
+    padding: 8px;
+    text-align: left;
+}
+
+.sql-table th {
+    background-color: #eeded0;
+    font-weight: bold;
+}
+
+/* multiple tables in join challenge */
+.sql-joined-tables {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-top: 10px;
+}
+
+.sql-joined-tables>* {
+    flex: 1 1 300px;
+    max-width: 100%;
+}
+
+.table-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.table-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    text-align: center;
+}

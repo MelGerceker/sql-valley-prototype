@@ -1,0 +1,195 @@
+:root {
+    --green: #57a75a;
+    --light: #FCE7CF;
+    --brownish: #420c14;
+    --red: #D64045;
+    --darkgreen: #006A67;
+    --tan: #F2D4B2;
+    --orange: orange;
+}
+
+/* Includes challenge area, other buttons, solution and feedback, and dart game */
+
+/* Challenge Area */
+
+#challenge-area {
+    background-color: var(--light);
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    border: 6px solid var(--green);
+    max-width: 900px;
+    justify-content: center;
+    margin-inline: auto;
+}
+
+.description-and-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+textarea,
+#user-input {
+    width: 90%;
+    max-width: 600px;
+    height: 60px;
+    font-family: monospace;
+    border: 2px solid var(--brownish);
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* Other Buttons */
+
+#submit-btn,
+#show-solution-btn,
+#hint-btn {
+    background-color: var(--darkgreen);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#hint-btn {
+    align-self: flex-start;
+    margin-bottom: 5px;
+}
+
+#toggle-table-btn {
+    background-color: var(--light);
+    color: #006A67;
+    border: 3px solid #006A67;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+#toggle-table-btn:hover {
+    color: #004d4c;
+}
+
+#show-solution-btn:hover,
+#submit-solution-btn:hover,
+#hint-btn:hover {
+    background-color: #004d4c;
+}
+
+/* Solution and Feedback */
+
+#feedback {
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+#solution-text {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.query-submit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.input-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: nowrap;
+    width: 100%;
+    max-width: 700px;
+    margin-inline: auto;
+}
+
+.right-side-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.after-submit-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    gap: 12px;
+}
+
+#hint-reveal {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    color: var(--orange);
+}
+
+#reveal-next-hint {
+    background-color: var(--green);
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    font-size: 18px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#reveal-next-hint:hover {
+    background-color: #428c45;
+}
+
+/* Dart Game */
+
+#dart-container {
+    --size: 19vmin;
+    --specialFields: 0.7vmin;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#dart-game {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#dart-game.hidden {
+    display: none !important;
+}
+
+#dart-target {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    pointer-events: auto;
+    cursor: crosshair;
+}
+
+/* Misc */
+
+.hidden {
+    display: none;
+}
