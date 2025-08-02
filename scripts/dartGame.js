@@ -6,6 +6,7 @@ const dartGame = document.getElementById("dart-game");
 const dartTarget = document.getElementById("dart-target");
 const accuracyText = document.getElementById("accuracy");
 const avgText = document.getElementById("average");
+const dartMessage = document.getElementById("dart-message");
 
 function updateScoreUI(accuracy) {
     const avg = dartShots ? Math.round(dartScoreTotal / dartShots) : 0;
@@ -46,15 +47,17 @@ function startDartGame() {
     dartTimeout = setTimeout(() => {
         dartTarget.style.visibility = "hidden";
 
-        accuracyText.textContent = "Too slow!";
-        avgText.textContent = ""; // needed?
+        dartMessage.textContent = "Too slow!";
+        dartMessage.classList.remove("hidden");
+
 
         setTimeout(() => {
+            dartMessage.classList.add("hidden");
             updateScoreUI(0); // missed
             hideDartGame();
             enableUI();
-        }, 1500);
-    }, 3000);
+        }, 1000);
+    }, 1500);
 
 }
 
@@ -99,5 +102,5 @@ document.addEventListener("click", (e) => {
     setTimeout(() => {
         hideDartGame();
         enableUI(); // fixes pointer issue after successful hit
-    }, 1500);
+    }, 300);
 });

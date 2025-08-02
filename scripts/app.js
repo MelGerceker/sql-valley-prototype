@@ -1,6 +1,8 @@
 let currentSkill = null;
+let currentSkillIndex = -1;
 const skillOrder = ["select", "where", "join"];
 const completedSkills = new Set();
+
 let dartsThrown = 0;
 let missingTokens = [];
 let revealedIndex = 0;
@@ -29,6 +31,11 @@ const toggle = document.querySelector(".menu__toggle");
 const overlay = document.querySelector(".menu__overlay");
 const panel = document.querySelector(".menu__panel");
 
+const prevBtn = document.getElementById("prev-btn");
+const nextBtn = document.getElementById("next-btn");
+const progressDisplay = document.getElementById("challenge-progress");
+const navContainer = document.getElementById("challenge-nav");
+
 // CTRL + Enter for submit button
 userInput.addEventListener("keydown", function (e) {
     if (e.ctrlKey && e.key === "Enter") {
@@ -43,6 +50,7 @@ skillButtons.forEach((btn) => {
         //console.log("Clicked:", btn.dataset.skill);
 
         currentSkill = btn.dataset.skill;
+        currentSkillIndex = skillOrder.indexOf(currentSkill);
 
         skillButtons.forEach(b => b.classList.remove("current"));
         btn.classList.add("current");
@@ -65,8 +73,25 @@ skillButtons.forEach((btn) => {
         renderTable(currentSkill);
         userInput.focus();
 
+        prevBtn.disabled = currentSkillIndex === 0;
+        nextBtn.disabled = currentSkillIndex === skillOrder.length - 1;
+        progressDisplay.textContent = `Challenge ${currentSkillIndex + 1} of ${skillOrder.length}`;
+        navContainer.classList.remove("hidden");
+
+
     });
 });
+
+// For previous/next challenge buttons
+function loadSkillByIndex(index) {
+    if (index < 0 || index >= skillOrder.length) return;
+
+    const skill = skillOrder[index];
+    const skillBtn = [...skillButtons].find(btn => btn.dataset.skill === skill);
+    if (skillBtn) skillBtn.click();
+}
+
+
 
 // Event: Submit answer
 submitBtn.addEventListener("click", () => {
@@ -222,4 +247,11 @@ document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && overlay.classList.contains("is-open")) {
         closeMenu();
     }
+
+    if (e.key === "ArrowLeft" && !prevBtn.disabled) prevBtn.click();
+    if (e.key === "ArrowRight" && !nextBtn.disabled) nextBtn.click();
+
 });
+
+prevBtn.addEventListener("click", () => loadSkillByIndex(currentSkillIndex - 1));
+nextBtn.addEventListener("click", () => loadSkillByIndex(currentSkillIndex + 1));

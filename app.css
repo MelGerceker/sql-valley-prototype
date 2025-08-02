@@ -192,8 +192,23 @@ textarea,
     height: 100px;
     pointer-events: auto;
     cursor: crosshair;
-
 }
+
+#dart-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: var(--red);
+    font-weight: bold;
+    z-index: 999999;
+}
+
+#dart-message.hidden {
+    display: none;
+}
+
 
 /* Misc */
 

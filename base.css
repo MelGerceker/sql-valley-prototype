@@ -35,13 +35,13 @@ h1 {
   margin: auto;
 
   padding: 30px;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
+  padding-top: 0px;
   border-radius: 8px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0px;
   text-align: center;
 }
 
@@ -64,6 +64,44 @@ h1 {
   background: rgba(0, 0, 0, 0.1);
   display: none;
 }
+
+/* Previous / Next Buttons */
+
+.challenge-navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 720px;
+  margin: 8px auto 0 auto;
+  padding: 0 10px;
+}
+
+.challenge-navigation button {
+  background-color: var(--darkgreen);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.challenge-navigation button:hover {
+  background-color: #00897b;
+}
+
+.challenge-navigation button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#challenge-progress {
+  font-weight: bold;
+  color: white;
+}
+
+
 
 /* Sliding Menu */
 .menu__toggle {
@@ -213,7 +251,6 @@ h1 {
   justify-content: center;
   flex-wrap: wrap;
   gap: 40px;
-  margin-top: 10px;
 }
 
 .sql-joined-tables>* {
