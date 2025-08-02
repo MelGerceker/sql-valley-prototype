@@ -46,45 +46,6 @@ userInput.addEventListener("keydown", function (e) {
 });
 
 // Event: Skill button clicked
-/*
-skillButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        //console.log("Clicked:", btn.dataset.skill);
-
-        currentSkill = btn.dataset.skill;
-        currentSkillIndex = skillOrder.indexOf(currentSkill);
-
-        skillButtons.forEach(b => b.classList.remove("current"));
-        btn.classList.add("current");
-
-        progressDisplay.textContent = `Challenge ${currentSkillIndex + 1} of ${skillOrder.length}`;
-
-        const challenge = challenges[currentSkill];
-        if (!challenge) return; // avoid errors
-
-        challengeTitle.textContent = challenge.title;
-        challengeDescription.textContent = challenge.description;
-        userInput.value = "";
-        feedback.textContent = "";
-
-        // Reset shown solution
-        showSolutionBtn.classList.add("hidden");
-        solutionText.classList.add("hidden");
-        solutionText.textContent = "";
-
-        challengeArea.classList.remove("hidden");
-        renderTable(currentSkill);
-        userInput.focus();
-
-        prevBtn.disabled = currentSkillIndex === 0;
-        nextBtn.disabled = currentSkillIndex === skillOrder.length - 1;
-        progressDisplay.textContent = `Challenge ${currentSkillIndex + 1} of ${skillOrder.length}`;
-        navContainer.classList.remove("hidden");
-
-
-    });
-});
-*/
 document.getElementById("skill-tree").addEventListener("click", (e) => {
     const btn = e.target.closest(".node");
     if (!btn) return;
@@ -167,21 +128,17 @@ submitBtn.addEventListener("click", () => {
             }
         }
 
-        // First Branching
-        if (currentSkill === "join") {
-            setTimeout(() => {
-                showBranchChoice();
-            }, 500);
-        } else {
-            setTimeout(() => {
-                startDartGame();
-            }, 1000);
-        }
-
-        // Start dart game
         setTimeout(() => {
             startDartGame();
-        }, 1000);
+
+            // First Branching
+            if (currentSkill === "join") {
+                setTimeout(() => {
+                    showBranchChoice();
+                }, 1500); // wait for dart game animations to complete
+            }
+        }, 500);
+
     }
 
     // Show solution button after an attempt
@@ -191,7 +148,6 @@ submitBtn.addEventListener("click", () => {
 });
 
 // Branching
-//TODO: choice screen also pops up before dart game, fix
 function showBranchChoice() {
     const modal = document.getElementById("branch-modal");
     const path1Btn = document.getElementById("path1-btn");

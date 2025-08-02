@@ -6,6 +6,9 @@
   --darkgreen: #006A67;
   --tan: #F2D4B2;
   --orange: orange;
+  /* z-index */
+  --highest: 999;
+
 }
 
 /* Includes general layout, menu, skill buttons, and data tables */
@@ -225,7 +228,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2000;
+  z-index: var(--highest);
 }
 
 .modal-content {
