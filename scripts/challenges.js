@@ -69,5 +69,19 @@ const challenges = {
         </div>
         `
 
+    },
+        p1c1: {
+        title: "Path 1 - Challenge 1",
+        description: "This is the first challenge in path 1. Type ANSWER.",
+        expected: {
+            answer: "answer"
+        },
+    },
+         p2c1: {
+        title: "Path 2 - Challenge 1",
+        description: "This is the first challenge in path 2. Type ANSWER.",
+        expected: {
+            answer: "answer"
+        },
     }
 };

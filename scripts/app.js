@@ -1,6 +1,7 @@
 let currentSkill = null;
 let currentSkillIndex = -1;
 const skillOrder = ["select", "where", "join"];
+let branchChosen = null;
 const completedSkills = new Set();
 
 let dartsThrown = 0;
@@ -45,6 +46,7 @@ userInput.addEventListener("keydown", function (e) {
 });
 
 // Event: Skill button clicked
+/*
 skillButtons.forEach((btn) => {
     btn.addEventListener("click", () => {
         //console.log("Clicked:", btn.dataset.skill);
@@ -55,6 +57,7 @@ skillButtons.forEach((btn) => {
         skillButtons.forEach(b => b.classList.remove("current"));
         btn.classList.add("current");
 
+        progressDisplay.textContent = `Challenge ${currentSkillIndex + 1} of ${skillOrder.length}`;
 
         const challenge = challenges[currentSkill];
         if (!challenge) return; // avoid errors
@@ -81,13 +84,48 @@ skillButtons.forEach((btn) => {
 
     });
 });
+*/
+document.getElementById("skill-tree").addEventListener("click", (e) => {
+    const btn = e.target.closest(".node");
+    if (!btn) return;
+
+    currentSkill = btn.dataset.skill;
+    currentSkillIndex = skillOrder.indexOf(currentSkill);
+
+    document.querySelectorAll(".node").forEach(b => b.classList.remove("current"));
+    btn.classList.add("current");
+
+    progressDisplay.textContent = `Challenge ${currentSkillIndex + 1} of ${skillOrder.length}`;
+
+    const challenge = challenges[currentSkill];
+    if (!challenge) return;
+
+    challengeTitle.textContent = challenge.title;
+    challengeDescription.textContent = challenge.description;
+    userInput.value = "";
+    feedback.textContent = "";
+
+    showSolutionBtn.classList.add("hidden");
+    solutionText.classList.add("hidden");
+    solutionText.textContent = "";
+
+    challengeArea.classList.remove("hidden");
+    renderTable(currentSkill);
+    userInput.focus();
+
+    prevBtn.disabled = currentSkillIndex === 0;
+    nextBtn.disabled = currentSkillIndex === skillOrder.length - 1;
+    navContainer.classList.remove("hidden");
+});
+
 
 // For previous/next challenge buttons
 function loadSkillByIndex(index) {
     if (index < 0 || index >= skillOrder.length) return;
 
     const skill = skillOrder[index];
-    const skillBtn = [...skillButtons].find(btn => btn.dataset.skill === skill);
+    const skillBtn = [...document.querySelectorAll(".node")].find(btn => btn.dataset.skill === skill);
+
     if (skillBtn) skillBtn.click();
 }
 
@@ -129,6 +167,17 @@ submitBtn.addEventListener("click", () => {
             }
         }
 
+        // First Branching
+        if (currentSkill === "join") {
+            setTimeout(() => {
+                showBranchChoice();
+            }, 500);
+        } else {
+            setTimeout(() => {
+                startDartGame();
+            }, 1000);
+        }
+
         // Start dart game
         setTimeout(() => {
             startDartGame();
@@ -140,6 +189,39 @@ submitBtn.addEventListener("click", () => {
     solutionText.classList.add("hidden");
 
 });
+
+// Branching
+//TODO: choice screen also pops up before dart game, fix
+function showBranchChoice() {
+    const modal = document.getElementById("branch-modal");
+    const path1Btn = document.getElementById("path1-btn");
+    const path2Btn = document.getElementById("path2-btn");
+
+    modal.classList.remove("hidden");
+
+    const handleChoice = (path) => {
+        branchChosen = path;
+        modal.classList.add("hidden");
+
+        if (!skillOrder.includes(branchChosen)) {
+            skillOrder.push(branchChosen);
+
+            const nextBtn = document.createElement("button");
+            nextBtn.className = "node";
+            nextBtn.textContent = branchChosen.toUpperCase();
+            nextBtn.dataset.skill = branchChosen;
+            document.getElementById("skill-tree").appendChild(nextBtn);
+
+        }
+
+        document.querySelector(`.node[data-skill="${branchChosen}"]`).click();
+    };
+
+    path1Btn.onclick = () => handleChoice("p1c1");
+    path2Btn.onclick = () => handleChoice("p2c1");
+}
+
+
 
 // Event: Show Solution
 showSolutionBtn.addEventListener("click", () => {

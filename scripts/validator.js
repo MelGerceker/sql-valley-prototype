@@ -41,8 +41,6 @@ function validateSQL(input, expected) {
     if (missingTokens.length > 0) {
         results.status = "partial";
         results.feedback = `⚠️ Partial match.`;
-        //TODO: Add hints button which will show:
-        // Missing: ${results.missingKeywords.join(", ")}
         return results;
     }
 
@@ -50,8 +48,6 @@ function validateSQL(input, expected) {
     if (extraTokens.length > 0) {
         results.status = "fail";
         results.feedback = `❌ Query is incorrect, some extra parts are present.`;
-        //TODO: Add hints button which will show:
-        // Extra token(s): ${extraTokens.join(", ")}
         return results;
     }
 
@@ -77,9 +73,7 @@ function validateSQL(input, expected) {
     results.status = "fail";
     results.feedback = `❌ Query is incorrect.`;
     return results;
-
 }
-
 
 
 if (typeof module !== 'undefined') {
