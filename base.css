@@ -236,6 +236,7 @@ h1 {
   padding: 20px 30px;
   border-radius: 10px;
   text-align: center;
+  border: 8px solid var(--green);
 }
 
 .modal-buttons {
@@ -249,8 +250,15 @@ h1 {
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
+  color: white;
+  background-color: var(--red);
+  border-radius: 50px;
+
 }
 
+.modal-buttons button:hover {
+  background-color: #a93132;
+}
 
 /* Data Tables */
 

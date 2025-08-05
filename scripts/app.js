@@ -1,8 +1,9 @@
 let currentSkill = null;
 let currentSkillIndex = -1;
 const skillOrder = ["select", "where", "join"];
-let branchChosen = null;
+//let branchChosen = null;
 const completedSkills = new Set();
+let branchChosen = localStorage.getItem("pathChosen");
 
 let dartsThrown = 0;
 let missingTokens = [];
@@ -142,6 +143,8 @@ function showBranchChoice() {
 
     const handleChoice = (path) => {
         branchChosen = path;
+        localStorage.setItem("pathChosen", path);
+
         modal.classList.add("hidden");
 
         if (!skillOrder.includes(branchChosen)) {
@@ -199,7 +202,25 @@ function handleSubmit() {
             // First Branching
             if (currentSkill === "join") {
                 setTimeout(() => {
-                    showBranchChoice();
+                    // auto load if path already chosen
+                    const savedPath = localStorage.getItem("pathChosen");
+                    if (savedPath) {
+                        branchChosen = savedPath;
+
+                        if (!skillOrder.includes(branchChosen)) {
+                            skillOrder.push(branchChosen);
+
+                            const nextBtn = document.createElement("button");
+                            nextBtn.className = "node";
+                            nextBtn.textContent = branchChosen.toUpperCase();
+                            nextBtn.dataset.skill = branchChosen;
+                            document.getElementById("skill-tree").appendChild(nextBtn);
+                        }
+
+                        document.querySelector(`.node[data-skill="${branchChosen}"]`).click();
+                    } else {
+                        showBranchChoice();
+                    }
                 }, 1500); // wait for dart game animations to complete
             }
         }, 500);

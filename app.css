@@ -38,7 +38,6 @@
     flex-wrap: wrap;
 }
 
-textarea,
 #user-input {
     width: 90%;
     max-width: 600px;
@@ -84,7 +83,7 @@ textarea,
 }
 
 #show-solution-btn:hover,
-#submit-solution-btn:hover,
+#submit-btn:hover,
 #hint-btn:hover {
     background-color: #004d4c;
 }
@@ -207,11 +206,6 @@ textarea,
     font-weight: bold;
     z-index: var(--highest);
 }
-
-#dart-message.hidden {
-    display: none;
-}
-
 
 /* Misc */
 

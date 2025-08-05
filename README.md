@@ -27,6 +27,9 @@ A simple educational web app that teaches SQL basics through interactive challen
 - After solving a challenge, play a quick dart game!
 - Click the dart icon to view your scoreboard and track stats.
 
+Branching:
+After the 3rd challenge, users get prompted to choose their own path. This choice gets locally stored.
+
 ## Making Learning Fun: The Dart Game
 
 Learning SQL from scratch can feel intimidating, hence I gamified the experience!

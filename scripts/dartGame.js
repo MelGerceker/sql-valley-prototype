@@ -78,8 +78,7 @@ function enableUI() {
 document.addEventListener("click", (e) => {
     if (
         dartGame.classList.contains("hidden") ||
-        dartTarget.style.visibility === "hidden"
-        ||
+        dartTarget.style.visibility === "hidden" ||
         !dartTarget.contains(e.target)
     ) return;
     clearTimeout(dartTimeout); // cancel dart removal
