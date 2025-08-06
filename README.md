@@ -4,7 +4,7 @@ A simple educational web app that teaches SQL basics through interactive challen
 
 ###  Features
 - 3 beginner SQL challenges: SELECT, WHERE, JOIN.
-- Progressive unlock system: Complete one challenge to unlcok the next one.
+- Progressive unlock system: Complete one challenge to unlock the next one.
 - Live feedback: Check if your answer was correct.
 - Hint system: Progressively reveal missing tokens, or see whether your answer had extra or out of order tokens.
 - Gamified breaks: Includes a mini Dart Game between challenges.
@@ -26,9 +26,12 @@ A simple educational web app that teaches SQL basics through interactive challen
 - Click Show Solution of you are stuck.
 - After solving a challenge, play a quick dart game!
 - Click the dart icon to view your scoreboard and track stats.
+- Branching: After the 3rd challenge, users get prompted to choose their own path. This choice gets locally stored.
 
-Branching:
-After the 3rd challenge, users get prompted to choose their own path. This choice gets locally stored.
+A general overview of the app:
+</br>
+<img width="650" alt="overview_screenshot" src="https://github.com/user-attachments/assets/d137a66f-c867-403c-9e3b-fa7cc875df3b"/>
+
 
 ## Making Learning Fun: The Dart Game
 
